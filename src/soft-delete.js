@@ -30,7 +30,7 @@ export default (Model, { deletedAt = 'deletedAt', _isDeleted = '_isDeleted', scr
     scrubbed = propertiesToScrub.reduce((obj, prop) => ({ ...obj, [prop]: null }), {});
   }
 
-  Model.defineProperty(deletedAt, { type: Date, required: false });
+  Model.defineProperty(deletedAt, { type: Date, required: false, default: null });
   Model.defineProperty(_isDeleted, { type: Boolean, required: true, default: false });
 
   Model.destroyAll = function softDestroyAll(where, options, cb) {
